@@ -28,8 +28,10 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^5.0.0",
     "prettier": "^1.19.1",
+    "script-ext-html-webpack-plugin": "^2.1.4",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
+    "svg-sprite-loader": "^4.1.6",
     "typescript": "~3.5.3",
     "vue-template-compiler": "^2.6.10"
   }
