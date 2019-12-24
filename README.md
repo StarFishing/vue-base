@@ -1,4 +1,4 @@
-# defalut
+# 基于Vue cli4+typescript搭建的项目基础模板
 
 ## Project setup
 ```
