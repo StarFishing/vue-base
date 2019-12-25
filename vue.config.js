@@ -33,8 +33,8 @@ module.exports = {
     open: true,
     overlay: {
       warnings: false,
-      errors: true
-    }
+      errors: true,
+    },
     // proxy: {
     //   // change xxx-api/login => mock/login
     //   // detail: https://cli.vuejs.org/config/#devserver-proxy
@@ -53,10 +53,12 @@ module.exports = {
     // it can be accessed in index.html to inject the correct title.
     name: name,
     resolve: {
+      // modules: [path.resolve('node_modules')], // 对于需要引入的模块去node_modules下找
+      // extensions: ['.js', '.css', '.json', '.vue', '.ts'], // 配置扩展名，使用场景如下
       alias: {
-        '@': resolve('src')
-      }
-    }
+        '@': resolve('src'),
+      },
+    },
   },
   chainWebpack(config) {
     config.plugins.delete('preload') // TODO: need test
@@ -75,7 +77,7 @@ module.exports = {
       .use('svg-sprite-loader')
       .loader('svg-sprite-loader')
       .options({
-        symbolId: 'icon-[name]'
+        symbolId: 'icon-[name]',
       })
       .end()
 
@@ -103,8 +105,8 @@ module.exports = {
         .use('script-ext-html-webpack-plugin', [
           {
             // `runtime` must same as runtimeChunk name. default is `runtime`
-            inline: /runtime\..*\.js$/
-          }
+            inline: /runtime\..*\.js$/,
+          },
         ])
         .end()
       config.optimization.splitChunks({
@@ -114,18 +116,18 @@ module.exports = {
             name: 'chunk-libs',
             test: /[\\/]node_modules[\\/]/,
             priority: 10,
-            chunks: 'initial' // only package third parties that are initially dependent
+            chunks: 'initial', // only package third parties that are initially dependent
           },
           commons: {
             name: 'chunk-commons',
             test: resolve('src/components'), // can customize your rules
             minChunks: 3, //  minimum common number
             priority: 5,
-            reuseExistingChunk: true
-          }
-        }
+            reuseExistingChunk: true,
+          },
+        },
       })
       config.optimization.runtimeChunk('single')
     })
-  }
+  },
 }
